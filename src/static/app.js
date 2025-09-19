@@ -10,8 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("/activities");
       const activities = await response.json();
 
-      // Clear loading message
+      // Clear loading message and dropdown options
       activitiesList.innerHTML = "";
+      activitySelect.innerHTML = ""; // Clear previous options
 
       // Populate activities list
       Object.entries(activities).forEach(([name, details]) => {
@@ -62,6 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
         messageDiv.textContent = result.message;
         messageDiv.className = "success";
         signupForm.reset();
+        // Refresh activities to update spots left after signup
+        fetchActivities();
       } else {
         messageDiv.textContent = result.detail || "An error occurred";
         messageDiv.className = "error";
@@ -81,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  
   // Initialize app
   fetchActivities();
 });
