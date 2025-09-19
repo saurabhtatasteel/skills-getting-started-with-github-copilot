@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       const response = await fetch("/activities");
       const activities = await response.json();
-
+ 
       // Clear loading message and dropdown options
       activitiesList.innerHTML = "";
       activitySelect.innerHTML = ""; // Clear previous options
